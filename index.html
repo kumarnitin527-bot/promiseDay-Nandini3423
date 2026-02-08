@@ -10,55 +10,45 @@ body{
     margin:0;
     font-family:'Segoe UI',sans-serif;
     overflow-x:hidden;
-    background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
-    background-size:400% 400%;
-    animation:bg 10s ease infinite;
     text-align:center;
     color:white;
+    background:url('background.jpg') no-repeat center center/cover;
 }
 
-@keyframes bg{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+/* Romantic overlay */
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(rgba(255,105,180,0.5),rgba(128,0,128,0.6));
+    z-index:-1;
 }
 
-/* 3D GLOW NAME */
+/* Glowing 3D Name */
 .name3d{
     font-size:60px;
+    margin-top:40px;
     font-weight:bold;
-    margin-top:30px;
     text-transform:uppercase;
-    letter-spacing:3px;
-    color:#fff;
     text-shadow:
         0 0 10px #fff,
         0 0 20px #ff4da6,
         0 0 40px #ff1a75,
         0 0 80px #ff1a75;
-    animation:glowPulse 2s infinite alternate;
+    animation:glow 2s infinite alternate;
 }
 
-@keyframes glowPulse{
-    from{transform:scale(1) rotateX(0deg);}
-    to{transform:scale(1.05) rotateX(5deg);}
-}
-
-/* Teddy */
-.teddy{
-    width:150px;
-    margin:20px 0;
-    animation:dance 1s infinite alternate ease-in-out;
-}
-
-@keyframes dance{
-    0%{transform:rotate(-10deg);}
-    100%{transform:rotate(10deg);}
+@keyframes glow{
+    from{transform:scale(1);}
+    to{transform:scale(1.05);}
 }
 
 /* Typewriter */
 .typewriter{
-    font-size:22px;
+    font-size:24px;
     margin-top:20px;
     min-height:30px;
     border-right:3px solid white;
@@ -67,26 +57,18 @@ body{
     overflow:hidden;
 }
 
-/* Message */
-.message{
-    max-width:650px;
-    margin:20px auto;
-    font-size:18px;
-    line-height:1.7;
-}
-
 /* Gallery */
 .gallery{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    gap:20px;
-    margin-top:30px;
+    gap:25px;
+    margin:50px 20px;
 }
 
 .card{
-    width:200px;
-    height:250px;
+    width:220px;
+    height:280px;
     perspective:1000px;
 }
 
@@ -108,26 +90,30 @@ body{
     height:100%;
     backface-visibility:hidden;
     border-radius:15px;
+    overflow:hidden;
 }
 
 .card-front img{
     width:100%;
     height:100%;
-    border-radius:15px;
+    object-fit:cover;
 }
 
 .card-back{
     background:rgba(255,255,255,0.2);
-    backdrop-filter:blur(5px);
+    backdrop-filter:blur(8px);
     transform:rotateY(180deg);
     display:flex;
     align-items:center;
     justify-content:center;
+    padding:15px;
+    font-size:16px;
+    line-height:1.5;
 }
 
 /* Buttons */
 button{
-    padding:10px 20px;
+    padding:12px 25px;
     margin:10px;
     border:none;
     border-radius:25px;
@@ -143,28 +129,17 @@ button:hover{
     color:white;
 }
 
+/* Promise */
 .promise{
     display:none;
-    font-size:20px;
-    margin-top:20px;
-    animation:fadeIn 2s ease forwards;
+    font-size:22px;
+    margin:20px;
+    animation:fadeIn 2s forwards;
 }
 
 @keyframes fadeIn{
     from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
-}
-
-/* Floating Hearts */
-.heart{
-    position:fixed;
-    font-size:20px;
-    animation:floatUp 4s linear forwards;
-}
-
-@keyframes floatUp{
-    0%{opacity:1; transform:translateY(0) scale(1);}
-    100%{opacity:0; transform:translateY(-200px) scale(2);}
 }
 
 @media(max-width:768px){
@@ -177,50 +152,41 @@ button:hover{
 
 <div class="name3d">NANDINI ❤️</div>
 
-<img src="https://i.imgur.com/6Xg8Z8D.png" class="teddy">
-
-<!-- TYPEWRITER TEXT -->
 <div class="typewriter" id="typeText"></div>
 
-<div class="message">
-<p>
-Nandini, I don’t know when friendship started turning into something deeper,
-but somewhere between our talks, your laughter, and those silent understanding moments…
-you became truly special to me. 💖  
-On this Promise Day, I don’t just promise to stay —
-I promise to respect your dreams, protect your happiness,
-and always be the person you can rely on without fear.  
-You are not just important… you are irreplaceable in my life. ✨
-</p>
-</div>
-
-<!-- Gallery -->
+<!-- 3 PHOTO CARDS -->
 <div class="gallery">
 
 <div class="card">
 <div class="card-inner">
 <div class="card-front">
-<img src="photo1.jpg">
+<img src="photo1.jpeg">
 </div>
-<div class="card-back">Our Memories 💕</div>
+<div class="card-back">
+Your smile makes my world brighter 💖
 </div>
-</div>
-
-<div class="card">
-<div class="card-inner">
-<div class="card-front">
-<img src="photo2.jpg">
-</div>
-<div class="card-back">Your Smile 😊</div>
 </div>
 </div>
 
 <div class="card">
 <div class="card-inner">
 <div class="card-front">
-<img src="photo3.jpg">
+<img src="photo2.jpeg">
 </div>
-<div class="card-back">Forever Special ✨</div>
+<div class="card-back">
+Every moment with you feels special ✨
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-inner">
+<div class="card-front">
+<img src="photo3.jpeg">
+</div>
+<div class="card-back">
+You will always have a special place in my heart 💞
+</div>
 </div>
 </div>
 
@@ -230,10 +196,10 @@ You are not just important… you are irreplaceable in my life. ✨
 <button onclick="showPromise()">Click to See My Promise 💌</button>
 
 <div class="promise" id="promiseText">
-Nandini, I promise that no matter where life takes us,
-I will always care for you genuinely,
-respect you deeply,
-and never let you feel alone. 💞
+Nandini, I promise to always respect you,
+support you, and care for you genuinely.
+No matter what life brings,
+you will always matter to me. ❤️
 </div>
 
 <audio id="bgMusic" loop>
@@ -251,33 +217,4 @@ function typing(){
         setTimeout(typing,100);
     }
 }
-typing();
-
-// Music
-function playMusic(){
-    document.getElementById("bgMusic").play();
-}
-
-// Show Promise + Heart Burst
-function showPromise(){
-    document.getElementById("promiseText").style.display="block";
-    heartBurst();
-}
-
-function heartBurst(){
-    for(let i=0;i<30;i++){
-        const heart=document.createElement("div");
-        heart.className="heart";
-        heart.innerHTML="💖";
-        heart.style.left=(window.innerWidth/2)+"px";
-        heart.style.top=(window.innerHeight/2)+"px";
-        heart.style.fontSize=Math.random()*20+10+"px";
-        heart.style.transform=`translate(${(Math.random()-0.5)*300}px, ${(Math.random()-0.5)*300}px)`;
-        document.body.appendChild(heart);
-        setTimeout(()=>heart.remove(),4000);
-    }
-}
-</script>
-
-</body>
-</html>
+typin
