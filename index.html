@@ -9,13 +9,12 @@
 body{
     margin:0;
     font-family:'Segoe UI',sans-serif;
-    overflow-x:hidden;
     text-align:center;
     color:white;
     background:url('background.jpg') no-repeat center center/cover;
 }
 
-/* Romantic overlay */
+/* Soft Romantic Overlay */
 body::before{
     content:"";
     position:fixed;
@@ -27,9 +26,9 @@ body::before{
     z-index:-1;
 }
 
-/* Glowing 3D Name */
+/* Name */
 .name3d{
-    font-size:60px;
+    font-size:55px;
     margin-top:40px;
     font-weight:bold;
     text-transform:uppercase;
@@ -46,30 +45,45 @@ body::before{
     to{transform:scale(1.05);}
 }
 
+/* Friendship Message */
+.friend-msg{
+    font-size:20px;
+    max-width:700px;
+    margin:10px auto 20px;
+    line-height:1.6;
+}
+
 /* Typewriter */
 .typewriter{
-    font-size:24px;
-    margin-top:20px;
-    min-height:30px;
+    font-size:22px;
+    margin-top:10px;
     border-right:3px solid white;
     display:inline-block;
     white-space:nowrap;
     overflow:hidden;
 }
 
-/* Gallery */
+/* Gallery Layout */
 .gallery{
     display:flex;
     justify-content:center;
+    align-items:center;
+    gap:30px;
+    margin:40px 20px;
     flex-wrap:wrap;
-    gap:25px;
-    margin:50px 20px;
 }
 
+/* Cards */
 .card{
-    width:220px;
-    height:280px;
+    width:200px;
+    height:260px;
     perspective:1000px;
+}
+
+/* Center card bigger */
+.card.center{
+    width:240px;
+    height:300px;
 }
 
 .card-inner{
@@ -96,11 +110,11 @@ body::before{
 .card-front img{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:cover; /* Proper Crop */
 }
 
 .card-back{
-    background:rgba(255,255,255,0.2);
+    background:rgba(255,255,255,0.25);
     backdrop-filter:blur(8px);
     transform:rotateY(180deg);
     display:flex;
@@ -108,7 +122,6 @@ body::before{
     justify-content:center;
     padding:15px;
     font-size:16px;
-    line-height:1.5;
 }
 
 /* Buttons */
@@ -129,11 +142,12 @@ button:hover{
     color:white;
 }
 
-/* Promise */
+/* Promise Message */
 .promise{
     display:none;
     font-size:22px;
-    margin:20px;
+    max-width:700px;
+    margin:20px auto;
     animation:fadeIn 2s forwards;
 }
 
@@ -144,6 +158,7 @@ button:hover{
 
 @media(max-width:768px){
     .name3d{font-size:40px;}
+    .gallery{flex-direction:column;}
 }
 </style>
 </head>
@@ -151,6 +166,12 @@ button:hover{
 <body>
 
 <div class="name3d">NANDINI ❤️</div>
+
+<div class="friend-msg">
+Some friendships are not just connections,  
+they are blessings in disguise.  
+And you are one of the most beautiful blessings in my life. ✨💖
+</div>
 
 <div class="typewriter" id="typeText"></div>
 
@@ -163,18 +184,18 @@ button:hover{
 <img src="photo1.jpeg">
 </div>
 <div class="card-back">
-Your smile makes my world brighter 💖
+Your smile has the power to calm my chaos 💕
 </div>
 </div>
 </div>
 
-<div class="card">
+<div class="card center">
 <div class="card-inner">
 <div class="card-front">
 <img src="photo2.jpeg">
 </div>
 <div class="card-back">
-Every moment with you feels special ✨
+You are the most beautiful part of my memories ✨
 </div>
 </div>
 </div>
@@ -185,21 +206,22 @@ Every moment with you feels special ✨
 <img src="photo3.jpeg">
 </div>
 <div class="card-back">
-You will always have a special place in my heart 💞
+No matter what happens, I’ll always value you 💞
 </div>
 </div>
 </div>
 
 </div>
 
-<button onclick="playMusic()">Play Music 🎵</button>
-<button onclick="showPromise()">Click to See My Promise 💌</button>
+<button onclick="showPromise()">Click My Promise 💌</button>
 
 <div class="promise" id="promiseText">
-Nandini, I promise to always respect you,
-support you, and care for you genuinely.
-No matter what life brings,
-you will always matter to me. ❤️
+Nandini, I promise that I will always respect you,
+care for you sincerely,
+support your dreams,
+and stand beside you whenever you need someone.
+No matter where life takes us,
+your importance in my life will never fade. ❤️
 </div>
 
 <audio id="bgMusic" loop>
@@ -207,7 +229,7 @@ you will always matter to me. ❤️
 </audio>
 
 <script>
-// Typewriter Effect
+// Typewriter
 const text="Dear Nandini...";
 let i=0;
 function typing(){
@@ -217,4 +239,20 @@ function typing(){
         setTimeout(typing,100);
     }
 }
-typin
+typing();
+
+// Autoplay Music (may require interaction in some browsers)
+window.onload = function(){
+    const music = document.getElementById("bgMusic");
+    music.play().catch(()=>{});
+}
+
+// Show Promise + Play Music
+function showPromise(){
+    document.getElementById("promiseText").style.display="block";
+    document.getElementById("bgMusic").play();
+}
+</script>
+
+</body>
+</html>
