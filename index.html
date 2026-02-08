@@ -170,4 +170,114 @@ button:hover{
 @media(max-width:768px){
     .name3d{font-size:40px;}
 }
-</
+</style>
+</head>
+
+<body>
+
+<div class="name3d">NANDINI ❤️</div>
+
+<img src="https://i.imgur.com/6Xg8Z8D.png" class="teddy">
+
+<!-- TYPEWRITER TEXT -->
+<div class="typewriter" id="typeText"></div>
+
+<div class="message">
+<p>
+Nandini, I don’t know when friendship started turning into something deeper,
+but somewhere between our talks, your laughter, and those silent understanding moments…
+you became truly special to me. 💖  
+On this Promise Day, I don’t just promise to stay —
+I promise to respect your dreams, protect your happiness,
+and always be the person you can rely on without fear.  
+You are not just important… you are irreplaceable in my life. ✨
+</p>
+</div>
+
+<!-- Gallery -->
+<div class="gallery">
+
+<div class="card">
+<div class="card-inner">
+<div class="card-front">
+<img src="photo1.jpg">
+</div>
+<div class="card-back">Our Memories 💕</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-inner">
+<div class="card-front">
+<img src="photo2.jpg">
+</div>
+<div class="card-back">Your Smile 😊</div>
+</div>
+</div>
+
+<div class="card">
+<div class="card-inner">
+<div class="card-front">
+<img src="photo3.jpg">
+</div>
+<div class="card-back">Forever Special ✨</div>
+</div>
+</div>
+
+</div>
+
+<button onclick="playMusic()">Play Music 🎵</button>
+<button onclick="showPromise()">Click to See My Promise 💌</button>
+
+<div class="promise" id="promiseText">
+Nandini, I promise that no matter where life takes us,
+I will always care for you genuinely,
+respect you deeply,
+and never let you feel alone. 💞
+</div>
+
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mp3">
+</audio>
+
+<script>
+// Typewriter Effect
+const text="Dear Nandini...";
+let i=0;
+function typing(){
+    if(i<text.length){
+        document.getElementById("typeText").innerHTML+=text.charAt(i);
+        i++;
+        setTimeout(typing,100);
+    }
+}
+typing();
+
+// Music
+function playMusic(){
+    document.getElementById("bgMusic").play();
+}
+
+// Show Promise + Heart Burst
+function showPromise(){
+    document.getElementById("promiseText").style.display="block";
+    heartBurst();
+}
+
+function heartBurst(){
+    for(let i=0;i<30;i++){
+        const heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="💖";
+        heart.style.left=(window.innerWidth/2)+"px";
+        heart.style.top=(window.innerHeight/2)+"px";
+        heart.style.fontSize=Math.random()*20+10+"px";
+        heart.style.transform=`translate(${(Math.random()-0.5)*300}px, ${(Math.random()-0.5)*300}px)`;
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),4000);
+    }
+}
+</script>
+
+</body>
+</html>
